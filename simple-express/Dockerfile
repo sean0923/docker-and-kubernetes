@@ -3,8 +3,9 @@ FROM  node:alpine
 
 
 # Install some dependencies
-COPY ./ ./
+COPY ./package.json ./
 RUN npm install
+COPY ./ ./
 
 
 # Define command
