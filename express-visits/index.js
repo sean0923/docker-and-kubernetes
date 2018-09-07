@@ -13,6 +13,8 @@ app.get('/', (req, res) => {
   res.send();
 });
 
-app.listen(8081, () => {
-  console.log('Listening on port 8081');
+const PORT = 4001;
+
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`);
 });
