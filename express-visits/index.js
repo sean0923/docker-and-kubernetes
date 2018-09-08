@@ -2,7 +2,10 @@ const express = require('express');
 const redis = require('redis');
 
 const app = express();
-const client = redis.createClient();
+const client = redis.createClient({
+  host: 'redis-server',
+  port: 6379,
+});
 client.set('visits', 0);
 
 app.get('/', (req, res) => {
@@ -10,10 +13,9 @@ app.get('/', (req, res) => {
     res.send('Number of visits is ' + visits);
     client.set('visits', parseInt(visits) + 1);
   });
-  res.send();
 });
 
-const PORT = 4001;
+const PORT = 8081;
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
